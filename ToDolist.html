@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <title>ToDo List</title>
+    <meta charset="UTF-8">
+
+    <link href="./semantic.min.css" rel="stylesheet" type="text/css">
+    <script src="./jquery.min.js"></script>
+    <script src="./semantic.min.js"></script>
+
+    <script>
+        function add(list, value){
+            
+            const node = document.createElement("div")
+            node.className = 'item'
+
+            const buttonContainer = document.createElement('div')
+            buttonContainer.className = 'right floated content'
+
+            const button = document.createElement('button')
+            button.className = 'ui yellow button'
+            button.innerHTML = 'Delete'
+
+            button.addEventListener('click', function(event){
+                node.parentNode.removeChild(node)
+            })
+
+            var l = document.createElement("div")
+            var textnode = document.createTextNode(value)
+            
+            
+            buttonContainer.appendChild(button);
+            //node.appendChild(buttonContainer);
+            l.appendChild(textnode);
+            l.appendChild(buttonContainer);
+            
+            node.appendChild(l);
+            list.appendChild(node);
+
+            return list
+        }
+    </script>
+
+
+</head>
+  
+
+<body style="background-color: #141313">
+    <!--Header-->
+    <div class="ui container">
+            <h1 class="ui red dividing header">TODO List</h1>
+            <div class="ui equal width center aligned padded grid">
+                <div class="equal width row">
+                    
+                    <div class="orange column">
+                        <h2><div class="content">YESTERDAY EVENTS</div></h2> 
+                        <div id="List1" class="ui middle aligned divided list">
+                            <div class="ui large right labeled left icon input">
+                                    <input id="listInput1" type="text" placeholder="Enter tags">
+                                    <a class="ui tag label" onclick="add(document.getElementById('List1'), document.getElementById('listInput1').value)">Add Item</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="red column">
+                        <h2><div class="content">TODAY EVENTS</div></h2> 
+                        <div id="List2" class="ui middle aligned divided list">
+                            <div class="ui large right labeled left icon input">
+                                    <input id="listInput2" type="text" placeholder="Enter tags">
+                                    <a class="ui tag label" onclick="add(document.getElementById('List2'), document.getElementById('listInput2').value)">Add Item</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="blue column">
+                            <h2><div class="content">TOMORROW EVENTS</div></h2> 
+                            <div id="List3" class="ui middle aligned divided list">
+                                <div class="ui large right labeled left icon input">
+                                        <input id="listInput3" type="text" placeholder="Enter tags">
+                                        <a class="ui tag label" onclick="add(document.getElementById('List3'), document.getElementById('listInput3').value)">Add Item</a>
+                                </div>
+                            </div>
+                        </div>
+    
+                </div>
+            </div>
+    </div>
+           
+</body>
+</html>
